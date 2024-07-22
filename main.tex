@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array, tikz}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newtheorem{theorem}{Theorem}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{MathLab \#8}
+\author{Cameron Egbert\\
+Summer 2024}
+\date{Tue July 1st}
+\maketitle
+
+
+\begin{problem}{1}
+    For a multicycle graph $G = \{V, E\}$, $gon(G) = 2$ if and only if $e_{12}=e_{34}=1$ or $e_{23}=e_{41}=1$.
+\end{problem}
+\begin{proof}
+    If $e_{12}=e_{34}=1$, the gonality of the graph is two because the starting values, for each respective vertex, $\{1, 0, 0, 1\}$, satisfy gonality 2 and if $e_{23}=e_{41}=1$, the gonality of the graph is two because the starting values $\{1, 1, 0, 0\}$, for each respective vertex,  satisfy gonality 2. Additionally, if $e_{12}=e_{34}=1$ and $e_{23}=e_{41}=1$ are not true, then there must exist a node $v_j$ such that $v_{ij} > 1$ and $v_{jk} > 1$ and a graph, of size 4, containing a node like this must be gonality greater than 2. This is because $v_j$ must have a starting value greater than zero as any a chip firing sequence would require at least 2 chips on $v_i$ and on $v_j$ to rectify a negative $v_j$. Additionally with $v_j$ starting with 1 chip, there is no way to add less than two chips to satisfy gonality, no matter which node you put the singlular chip on, (there are counterexaples for each). Therefore proved.
+\end{proof}
+
+\begin{problem}{2}
+    There are no winning configurations smaller than 
+    \[
+        \min_{k} (l_k + |l_i > l_k)|)
+    \] 
+    in a multi-spoke graph.
+\end{problem}
+\begin{proof}
+
+
+    
+    Given the gonality $<$ n, there will exist nodes in a winning divisor with starting value 0. We can build minimum divisors for all configurations of 0-nodes and show they are values found in instances of k for the term in $\min_{k}$ (whatever).
+
+    If center is 0, 
+    If center isn't 0: need largest spoke 0 to transfer back to middle
+    
+\end{proof}
+
+\end{document}
