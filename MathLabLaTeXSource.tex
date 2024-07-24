@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+%Here's some stuff that may help later
+
+\usepackage{mathrsfs}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epsf}
+\usepackage{latexsym}
+\usepackage{verbatim}
+\usepackage[all, cmtip]{xy}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{matrix}
+\usepackage{float}
+%\usepackage{showkeys}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+
+%Dont forget these Tableaux macros
+\tikzstyle{bsq}=[rectangle, draw, thick, minimum width=.5cm, minimum height=.5cm]
+\tikzstyle{bver}=[rectangle, draw, thick, minimum width=1cm, minimum height=2cm]
+\tikzstyle{bhor}=[rectangle, draw, thick, minimum width=2cm, minimum height=1cm]
+
+\usepackage[left=3.2cm, right=3.2cm]{geometry}
+
+\setlength{\textheight}{8.5in} \setlength{\topmargin}{0.0in}
+%\setlength{\textwidth}{6in} \setlength{\leftmargin}{-.5in}
+\setlength{\headheight}{0in} \setlength{\headsep}{0.3in}
+\setlength{\leftmargin}{1.5in}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{varexample}[theorem]{Example}
+
+
+
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{MathLab Write Up}
+\author{Sam Dalton, Cameron Egbert, Ayham Yousef}
+\date{July 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\begin{definition}
+    Let G be a multi-spoked graph with center vertex $v_0$ and additional vertices $v_i$ along each corresponding spoke of weight $\ell_i$. All edges are of the form $(v_0,v_i)$. Let $c_i$ denote the number of chips placed on any vertex $v_i$.
+\end{definition}
+
+\begin{definition}
+    Chip-firing is the operation in which chips placed on vertices are then transferred to adjacent vertices through the weighted edges. The weight of the edges 
+\end{definition}
+
+
+
+\begin{lemma}
+    Let $G$ be a spoke graph on $n$ vertices with edges weighted $\ell_i$. Let $D$ be a winning divisor for $r$-gonality with the necessary assumptions. If $\ell_j>k$, then there are at least $r$ chips on $v_j$.
+\end{lemma}
+\begin{proof}
+        Given k chips for $v_m$, and weight $\ell_i > k$, it is not possible to fire from $v_0$ to $v_1$ without creating new debt of $k-\ell_i$ on $v_0$. Since chip firing from $v_0$ to $v_i$ creates debt $\Rightarrow$ $\nexists$ any chip firing operation between $v_0,v_i |c_0,c_i\geq 0$. Since $\nexists$ any valid chip-firing operations, there must be at least r chips on $v_i$ in order to account for the case where r chips are removed from $v_i$. 
+
+\end{proof}
+
+
+\begin{lemma}
+    Let $G$ be a spoke graph on $n$ vertices with edges weighted $\ell_i$. Let $A_k = \{\ell_i \mid \ell_i>k \}$.  
+    $$gon(G) = \min_{k}\{k + |A_k|\}$$
+\end{lemma}
+\begin{proof}
+    
+\end{proof} 
+
+\begin{lemma}
+    Let $G$ be a spoke graph on $n$ vertices with edges weighted $\ell_i$. Let $A_{1,k} = \{\ell_i \mid \frac{k}{2}<\ell_i\leq k \}$ and $A_{2,k} = \{ \ell_i \mid \ell_i>k \}$.  
+    $$gon_2(G) =\begin{cases}
+         \min_{k}\{k + |A_{1,k}| +2|A_{2,k}|\} & \text{ if } \max\{\ell_i \mid \ell_i \leq \frac{k}{2}\} +\min\{ \ell_i \mid \frac{k}{2}<\ell_i\leq k \}>k \\
+         \min_{k}\{k + |A_{1,k}|-1 +2|A_{2,k}|\} & \text{ if } \max\{\ell_i \mid \ell_i \leq \frac{k}{2}\} +\min\{ \ell_i \mid \frac{k}{2}<\ell_i\leq k \}\leq k \\
+    \end{cases}$$
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+\begin{lemma}
+    Let $G$ be a spoke graph on $n$ vertices with edges weighted $\ell_i$. Let $D$ be a winning divisor for $r$-gonality with the necessary assumptions. If $\ell_j=k-a$ for some $a\in \mathbb{Z}_{\geq 0}$, then there are at least $r-(a+1)$ chips on $v_j$.
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+\begin{lemma}
+    Let $G$ be the spoke graph with $n-1$ spokes and $\ell_i = i$ for all $1\leq i \leq n-1$. Then
+    $$gon(G) = $$
+\end{lemma}
+
+\begin{lemma}
+    Let $G$ be the spoke graph with $n-1$ spokes and $\ell_i = i$ for all $1\leq i \leq n-1$. Then
+    $$gon_2(G) = \left\lfloor \frac{3}{2} gon(G) \right\rfloor$$
+\end{lemma}
+
+\begin{lemma}
+    Let $D$ be a winning divisor
+\end{lemma}
+
+\end{document}
