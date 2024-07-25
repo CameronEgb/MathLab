@@ -4,13 +4,21 @@ from mpl_toolkits import mplot3d
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
+from itertools import product
 
 orig_stdout = sys.stdout
 f = open('out.txt', 'w')
-sys.stdout = f
+#sys.stdout = f
 #MIN from r to rn of k plus the sum from 1 to r-1 of (i)#((k/r-i+1) < l < (k/r-i)) plus r#(l>k)
 
-def generateGraphs(maxWeights):
+
+def generate_arrays(n, y):
+    return list(product(range(y), repeat=n))
+
+    
+       
+
+def loop_rec(maxWeights):
     Graphs = []
     for a in range(1, maxWeights):
         for b in range(1, maxWeights):
@@ -68,7 +76,7 @@ def computeGonalities(Graph, maxComputedGonality):
     return Graph, winningConfigurations, GonalitySequence
 
 def plotGraphs():
-    Graphs = generateGraphs(7)
+    Graphs = generate_arrays(5, 7)
     Gonalities = [[], [], []]
     interestingGraphs = []
     for G in Graphs:
@@ -93,7 +101,7 @@ def plotGraphs():
     plt.show()
     
    
-Graph = [9, 9, 9, 9, 9, 9, 5, 2, 2]
+Graph = [1,2,3,4,5]
 graph, configs, gonSeq = computeGonalities(Graph, 3)
 splitGraph = [[] for _ in range(len(configs))]
 print("Graph + configs: " +str(configs)+ " Gonalities: " + str(gonSeq))
