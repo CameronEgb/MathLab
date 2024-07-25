@@ -13,23 +13,7 @@ f = open('out.txt', 'w')
 
 
 def generate_arrays(n, y):
-    return list(product(range(y), repeat=n))
-
-    
-       
-
-def loop_rec(maxWeights):
-    Graphs = []
-    for a in range(1, maxWeights):
-        for b in range(1, maxWeights):
-            for c in range(1, maxWeights):
-                for d in range(1, maxWeights):
-                    for e in range(1, maxWeights):
-                        for f in range(1, maxWeights):
-                            #for g in range(1, maxWeights):
-                            Graphs.append([a, b, c, d, e, f])
-
-    return Graphs
+    return list(product(range(1, y), repeat=n))
 
 def computeGonalities(Graph, maxComputedGonality):
     GonalitySequence = []
@@ -73,20 +57,20 @@ def computeGonalities(Graph, maxComputedGonality):
         GonalitySequence.append(minWinningDivisorChipCount)
         winningConfigurations.append(winningConfig)
     
-    return Graph, winningConfigurations, GonalitySequence
+    return winningConfigurations, GonalitySequence
 
 def plotGraphs():
     Graphs = generate_arrays(5, 7)
     Gonalities = [[], [], []]
     interestingGraphs = []
     for G in Graphs:
-        graph, winningConfigs, currnetGons = computeGonalities(G, 3)
+        winningConfigs, currnetGons = computeGonalities(G, 3)
         Gonalities[0].append(currnetGons[0])
         Gonalities[1].append(currnetGons[1])
         Gonalities[2].append(currnetGons[2])
         if (currnetGons[1] < (3/2) * currnetGons[0]):
-            interestingGraphs.append(graph)
-            print("Graph: " +str(graph)+ ", Gonalities:" + str(currnetGons))
+            interestingGraphs.append(G)
+            print("Graph: " +str(G)+ ", Gonalities:" + str(currnetGons))
         #print("Graph: " +str(G)+ ", Gonalities:" + str(currnetGons))
 
     # Create a 3D plot
@@ -100,13 +84,27 @@ def plotGraphs():
 
     plt.show()
     
-   
+def computeDifferences(n, y):
+    
+    Graphs = generate_arrays(n, y)
+    
+    for G in Graphs:
+        winningConfigs, currnetGons = computeGonalities(G, 3)
+        for i in range(y + 3):
+            winningConfigsPrime, currnetGonsPrime = computeGonalities(G + (i,), 3)
+
+            if currnetGonsPrime[0] == currnetGons[0] + 1 and currnetGonsPrime[1] == currnetGons[1] + 1:
+                print("Adding " +str(i)+ " to " +str(G)+ " gives gonality sequences " +str(currnetGons)+ " and " +str(currnetGonsPrime))
+    
+    
+    return True   
 Graph = [1,2,3,4,5]
-graph, configs, gonSeq = computeGonalities(Graph, 3)
+configs, gonSeq = computeGonalities(Graph, 3)
 splitGraph = [[] for _ in range(len(configs))]
 print("Graph + configs: " +str(configs)+ " Gonalities: " + str(gonSeq))
 
-plotGraphs()
+#plotGraphs()
+computeDifferences(5, 10)
 
 sys.stdout = orig_stdout
 f.close()
