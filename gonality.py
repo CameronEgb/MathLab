@@ -25,16 +25,18 @@ def computeGonalities(Graph, maxComputedGonality):
         #print("R-gon for r = " +str(r))
         minWinningDivisorChipCount = float('inf')
         winningConfig = []
+        
         for maxMiddleChips in range (r, (len(Graph)+1) * r):
             #countArr = [maxMiddleChips]
             tail = r * sum(j > maxMiddleChips for j in Graph)
             winningDivisorChipCount = maxMiddleChips + tail
+            
             if r < 3:
                 for i in range(1, r):
                     #count = sum(j > maxMiddleChips*i/r for j in Graph) + sum (j <= (maxMiddleChips*(i+1))/r for j in Graph) - len(Graph)
-                    count = sum(j > maxMiddleChips/(r-i+1) for j in Graph) + sum (j <= (maxMiddleChips)/(r-i) for j in Graph) - len(Graph)
                     #countArr.append(count)
                     #print("count = " + str(count) + " when i = " + str(i))
+                    count = sum(j > maxMiddleChips/(r-i+1) for j in Graph) + sum (j <= (maxMiddleChips)/(r-i) for j in Graph) - len(Graph)
                     winningDivisorChipCount += (i) * count
             #countArr.append(tail)            
             
@@ -59,10 +61,11 @@ def computeGonalities(Graph, maxComputedGonality):
                         break
                 
                 minToAdd = float('inf')
-                for i in range(j):
+                for i in range(Graph[j]):
                     toAdd = sum(i < j <= maxMiddleChips - i for j in Graph) + 2 * sum(maxMiddleChips - i < j <= maxMiddleChips for j in Graph)
                     if toAdd < minToAdd:
                         minToAdd = toAdd
+                print(minToAdd)
                 winningDivisorChipCount += minToAdd
             #print("Current Winning Divisor Chip Count: " +str(winningDivisorChipCount) + " Chips in middle: " +str(maxMiddleChips))
             if winningDivisorChipCount < minWinningDivisorChipCount:
@@ -116,12 +119,12 @@ def computeDifferences(n, y):
 
 
 
-Graph = [1,2,3,4,5]
+Graph = (1,1,1,1,2,2)
 configs, gonSeq = computeGonalities(Graph, 3)
 splitGraph = [[] for _ in range(len(configs))]
 print("Graph + configs: " +str(configs)+ " Gonalities: " + str(gonSeq))
 
-plotGraphs()
+#plotGraphs()
 #computeDifferences(5, 10)
 
 sys.stdout = orig_stdout
