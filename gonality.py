@@ -65,7 +65,7 @@ def computeGonalities(Graph, maxComputedGonality):
                     toAdd = sum(i < j <= maxMiddleChips - i for j in Graph) + 2 * sum(maxMiddleChips - i < j <= maxMiddleChips for j in Graph)
                     if toAdd < minToAdd:
                         minToAdd = toAdd
-                print(minToAdd)
+                #print(minToAdd)
                 winningDivisorChipCount += minToAdd
             #print("Current Winning Divisor Chip Count: " +str(winningDivisorChipCount) + " Chips in middle: " +str(maxMiddleChips))
             if winningDivisorChipCount < minWinningDivisorChipCount:
@@ -77,8 +77,8 @@ def computeGonalities(Graph, maxComputedGonality):
     
     return winningConfigurations, GonalitySequence
 
-def plotGraphs():
-    Graphs = generate_arrays(5, 7)
+def plotGraphs(n, y):
+    Graphs = generate_arrays(n, y)
     Gonalities = [[], [], []]
     interestingGraphs = []
     for G in Graphs:
@@ -124,7 +124,7 @@ configs, gonSeq = computeGonalities(Graph, 3)
 splitGraph = [[] for _ in range(len(configs))]
 print("Graph + configs: " +str(configs)+ " Gonalities: " + str(gonSeq))
 
-#plotGraphs()
+plotGraphs(6, 12)
 #computeDifferences(5, 10)
 
 sys.stdout = orig_stdout

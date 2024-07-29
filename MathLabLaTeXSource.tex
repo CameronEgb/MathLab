@@ -43,7 +43,7 @@
 \newtheorem{question}[theorem]{Question}
 \newtheorem{varexample}[theorem]{Example}
 
-
+\newcommand{\I}{\mathcal{I}}
 
 \theoremstyle{definition}
 \newtheorem{remark}[theorem]{Remark}
@@ -117,7 +117,15 @@
 \end{lemma}
 
 \begin{lemma}
-    Let $D$ be a winning divisor
+    Let $D$ be a winning divisor. D is rank r if the following hold:
+    \[ \text{if } \sum_{i\in\I} \ell_i > k \text{ then there exist at least } r - |\I| + 1 \text{ chips among } \ell_{i\in\I} \] 
+    \[ \text{if } \sum_{i\in\I} \ell_i = k - a \text{ then there exist at least } r - |\I| - a \text{ chips among } \ell_{i\in\I} \] 
 \end{lemma}
+\begin{proof}
+    For any arrangement of $r - |\I|$ chips among $v_{i\in\I}$ with $c_i$ chips on $v_i$, 
+    there always exists a patteron of debt such that every $v_i$ is in debt, namely, $c_i + 1$ chips from every vertex.
+    The total debt is $\sum_{i\in\I} {(c_i + 1)} = r - |\I| + |\I| = r$. \\
+    Additionally, for any arrangement of $r - |\I| - a - 1$ chips among $v_{i\in\I}$ with $c_i$ chips on $v_i$. 
+\end{proof}
 
 \end{document}
